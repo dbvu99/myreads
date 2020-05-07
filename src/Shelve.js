@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Book from './Book'
 class ShelveComponent extends React.Component {
 
     constructor() {
@@ -12,11 +12,13 @@ class ShelveComponent extends React.Component {
     render() {
         return (
             <div className="shelve-component">
-                <h4>{this.props.shelveName}</h4>
+                <h2>{this.props.shelveName}</h2>
                 <ul>
                     {this.props.books.map(book => {
                         console.log(book)
-                    return <li key={book.id}>{book.title}</li>
+                        return <li key={book.id}>
+                            <Book title={book.title} thumbnail={book.imageLinks.smallThumbnail} authors={book.authors}></Book>
+                        </li>
                 })}
                 </ul>
             </div>
