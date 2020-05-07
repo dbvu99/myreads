@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Shelves from './Shelves'
+import Shelves from './Shelves';
 
 class App extends React.Component {
 

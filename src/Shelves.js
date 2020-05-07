@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import { getAll } from './BooksAPI'
-import Shelf from './Shelf'
+import { getAll } from './BooksAPI';
+import Shelf from './Shelf';
 class ShelvesComponent extends React.Component {
 
     constructor() {
-        super()
+        super();
         this.state = {
             currentlyReading: [],
             wantToRead: [],
             read: []
-        }
+        };
     }
 
     componentDidMount() {
@@ -19,16 +19,16 @@ class ShelvesComponent extends React.Component {
                 this.setState(prevState => {
                     prevState = {
                         currentlyReading: [],
-                            wantToRead: [],
-                                read: []
-                    }
+                        wantToRead: [],
+                        read: []
+                    };
                     res.forEach(books => {
-                        prevState[books.shelf].push(books)
+                        prevState[books.shelf].push(books);
                     });
 
-                    return prevState
-                })
-            }).catch(err => console.log(err))
+                    return prevState;
+                });
+            }).catch(err => console.log(err));
     }
 
 
