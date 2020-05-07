@@ -43,9 +43,21 @@ class ShelvesComponent extends React.Component {
     render() {
         return (
             <div className="shelves-component">
-                <Shelf refreshShelves={this.refreshShelves} shelfName={"Currently Reading"} books={this.state.currentlyReading}></Shelf>
-                <Shelf refreshShelves={this.refreshShelves} shelfName={"Want To Read"} books={this.state.wantToRead}></Shelf>
-                <Shelf refreshShelves={this.refreshShelves} shelfName={"Read"} books={this.state.read}></Shelf>
+                <Shelf
+                    refreshShelves={this.refreshShelves}
+                    shelfName={"Currently Reading"}
+                    books={this.state.currentlyReading}>
+                </Shelf>
+                <Shelf
+                    refreshShelves={this.refreshShelves}
+                    shelfName={"Want To Read"}
+                    books={this.state.wantToRead}>
+                </Shelf>
+                <Shelf
+                    refreshShelves={this.refreshShelves}
+                    shelfName={"Read"}
+                    books={this.state.read}>
+                </Shelf>
             </div>
         );
     }

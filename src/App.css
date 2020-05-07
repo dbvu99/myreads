@@ -29,7 +29,6 @@ ul {
 }
 .shelves-component {
   display: flex;
-  align-items: stretch;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
@@ -37,6 +36,8 @@ ul {
 
 .shelf-component {
   /* width: calc(100% / 3); */
+  flex-basis: 30%;
+  flex-grow: 0;
   border: solid 1px black;
   padding: 0px 15px;
   margin: 0px 2px;

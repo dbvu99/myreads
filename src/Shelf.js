@@ -11,7 +11,7 @@ class ShelfComponent extends React.Component {
 
 
     render() {
-        return (
+        return this.props.books.length > 0 ? (
             <div className="shelf-component">
                 <h2>{this.props.shelfName}</h2>
                 <ul className="flex-container">
@@ -28,7 +28,7 @@ class ShelfComponent extends React.Component {
                     })}
                 </ul>
             </div>
-        );
+        ) : null;
     }
 }
 
