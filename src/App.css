@@ -38,6 +38,7 @@ ul {
 .shelf-component {
   /* width: calc(100% / 3); */
   border: solid 1px black;
+  padding: 0px 15px;
   margin: 0px 2px;
   background-color: antiquewhite;
 }
