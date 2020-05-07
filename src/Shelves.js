@@ -7,6 +7,7 @@ class ShelvesComponent extends React.Component {
     constructor() {
         super();
         this.state = {
+            books: [],
             currentlyReading: [],
             wantToRead: [],
             read: []
@@ -14,10 +15,15 @@ class ShelvesComponent extends React.Component {
     }
 
     componentDidMount() {
+        this.refreshShelves();
+    }
+
+    refreshShelves = data => {
         getAll()
             .then(res => {
                 this.setState(prevState => {
                     prevState = {
+                        books: data,
                         currentlyReading: [],
                         wantToRead: [],
                         read: []
@@ -28,16 +34,18 @@ class ShelvesComponent extends React.Component {
 
                     return prevState;
                 });
-            }).catch(err => console.log(err));
-    }
+            })
+            .catch(err => console.log(err));
+
+    };
 
 
     render() {
         return (
             <div className="shelves-component">
-                <Shelf shelfName={"Currently Reading"} books={this.state.currentlyReading}></Shelf>
-                <Shelf shelfName={"Want To Read"} books={this.state.wantToRead}></Shelf>
-                <Shelf shelfName={"Read"} books={this.state.read}></Shelf>
+                <Shelf refreshShelves={this.refreshShelves} shelfName={"Currently Reading"} books={this.state.currentlyReading}></Shelf>
+                <Shelf refreshShelves={this.refreshShelves} shelfName={"Want To Read"} books={this.state.wantToRead}></Shelf>
+                <Shelf refreshShelves={this.refreshShelves} shelfName={"Read"} books={this.state.read}></Shelf>
             </div>
         );
     }

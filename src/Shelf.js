@@ -16,9 +16,14 @@ class ShelfComponent extends React.Component {
                 <h2>{this.props.shelfName}</h2>
                 <ul className="flex-container">
                     {this.props.books.map(book => {
-                        console.log(book);
                         return <li key={book.id}>
-                            <Book title={book.title} thumbnail={book.imageLinks.smallThumbnail} authors={book.authors}></Book>
+                            <Book
+                                refreshShelves={this.props.refreshShelves}
+                                title={book.title}
+                                id={book.id}
+                                thumbnail={book.imageLinks.smallThumbnail}
+                                authors={book.authors}
+                                shelf={book.shelf}></Book>
                         </li>;
                     })}
                 </ul>
