@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -23,7 +23,6 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +34,52 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+nav {
+  text-align: center;
+  padding: 1px;  
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.book-component {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  padding: 5px 25px 5px;
+  margin: 0px 25px;
+  border: solid 1px black;
+}
+.shelves-component {
+  display: flex;
+}
+
+
+.shelf-component {
+  width: calc(100% / 3);
+  border: solid 1px black;
+}
+
+.shelf-component h2 {
+  text-align: center;
+}
+
+
+.book-thumbnail {
+  align-self: center;
+  height: 200px;
+}
+
+.book-component button {
+  margin-top: 25px;
+  align-self: flex-end;
 }

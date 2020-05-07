@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { getAll } from './BooksAPI'
-import Shelve from './Shelve'
+import Shelf from './Shelf'
 class ShelvesComponent extends React.Component {
 
     constructor() {
@@ -35,9 +35,9 @@ class ShelvesComponent extends React.Component {
     render() {
         return (
             <div className="shelves-component">
-                <Shelve shelveName={"Currently Reading"} books={this.state.currentlyReading}></Shelve>
-                <Shelve shelveName={"Want To Read"} books={this.state.wantToRead}></Shelve>
-                <Shelve shelveName={"Read"} books={this.state.read}></Shelve>
+                <Shelf shelfName={"Currently Reading"} books={this.state.currentlyReading}></Shelf>
+                <Shelf shelfName={"Want To Read"} books={this.state.wantToRead}></Shelf>
+                <Shelf shelfName={"Read"} books={this.state.read}></Shelf>
             </div>
         );
     }
