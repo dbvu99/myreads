@@ -23,7 +23,7 @@ class BookComponent extends React.Component {
     updateShelf = (props, e) => {
         update(props, e.currentTarget.value)
             .then(res => {
-                this.props.refreshShelves(res);
+                this.props.refreshShelves && this.props.refreshShelves(res);
             })
             .catch(console.log);
 
@@ -34,10 +34,10 @@ class BookComponent extends React.Component {
     render() {
         return (
             <div className="book-component">
-                <img className="book-thumbnail" src={this.props.thumbnail} alt="book cover"></img>
+                {this.props.thumbnail && <img className="book-thumbnail" src={this.props.thumbnail} alt="book cover"></img>}
                 <h4>{this.props.title}</h4>
                 <ul>
-                    {this.props.authors.map((author, index) => {
+                    {this.props.authors && this.props.authors.map((author, index) => {
                         return <li key={index}>{author}</li>;
                     })}
                 </ul>

@@ -1,5 +1,4 @@
-.App {
-}
+
 h1 {
   margin: 0 25px;
 }
@@ -30,7 +29,6 @@ ul {
   padding: 5px 15px 5px;
   margin: 0px 5px 5px;
   border: solid 1px black;
-  background-color: white;
 }
 .shelves-component {
   display: flex;
@@ -45,12 +43,12 @@ ul {
   flex-grow: 0;
   border: solid 1px black;
   padding: 0px 15px;
-  margin: 0px 2px;
-  background-color: antiquewhite;
+  margin: 5px;
 }
 
 .shelf-component h2 {
   text-align: center;
+  margin: 25px;
 }
 
 
@@ -72,5 +70,6 @@ ul {
   width: 80%;
   text-align: left;
   padding: 10px;
+  border: 1px solid black;
   
 }

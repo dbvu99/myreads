@@ -21,7 +21,7 @@ class ShelfComponent extends React.Component {
                                 refreshShelves={this.props.refreshShelves}
                                 title={book.title}
                                 id={book.id}
-                                thumbnail={book.imageLinks.smallThumbnail}
+                                thumbnail={book.imageLinks ? book.imageLinks.smallThumbnail : null}
                                 authors={book.authors}
                                 shelf={book.shelf}></Book>
                         </li>;
