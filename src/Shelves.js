@@ -2,6 +2,8 @@ import React from 'react';
 
 import { getAll } from './BooksAPI';
 import Shelf from './Shelf';
+import PropTypes from 'prop-types';
+
 class ShelvesComponent extends React.Component {
 
     constructor() {
@@ -62,5 +64,13 @@ class ShelvesComponent extends React.Component {
         );
     }
 }
+
+
+ShelvesComponent.propTypes = {
+    books: PropTypes.arrayOf(Object),
+    currentlyReading: PropTypes.arrayOf(Object),
+    wantToRead: PropTypes.arrayOf(Object),
+    read: PropTypes.arrayOf(Object),
+};
 
 export default ShelvesComponent;
