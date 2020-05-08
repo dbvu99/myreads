@@ -1,10 +1,15 @@
 .App {
 }
-
+h1 {
+  margin: 0 25px;
+}
 nav {
+  justify-content: center;
+  align-items: flex-end;
+  display: flex;
   text-align: center;
-  padding: 1px;  
-  background-color: plum;
+  padding: 25px;  
+  /* background-color: plum; */
 }
 
 .flex-container {
@@ -57,4 +62,15 @@ ul {
 .book-component select {
   margin: 25px 0 0 0;
   align-self: flex-start;
+}
+
+.search-component{
+  text-align: center;
+}
+.search-component input{
+  text-align: center;
+  width: 80%;
+  text-align: left;
+  padding: 10px;
+  
 }
