@@ -50,7 +50,9 @@ class BookComponent extends React.Component {
                         .filter(option => option.value !== this.props.shelf)
                         .map(option => <option
                             key={option.value}
-                            value={option.value}>
+                            value={option.value}
+                            disabled={option.value === "moveTo"}
+                        >
                             {option.label}
                         </option>)}
                 </select>
