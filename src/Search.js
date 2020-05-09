@@ -2,17 +2,24 @@ import React from 'react';
 import './App.css';
 import { search } from './BooksAPI';
 import Shelf from './Shelf';
+import Shelves from './Shelves';
 import PropTypes from 'prop-types';
+import { getAll } from './BooksAPI';
 
 
 
 class SearchComponent extends React.Component {
     state = {
+        myBooks: [],
         keywords: "",
         inDebounce: null,
         foundBooks: [],
         message: "no matches!"
     };
+
+    componentDidMount() {
+        this.refreshMyBooks();
+    }
 
     searchBooks = () => {
         this.setState({ inDebounce: null });
@@ -23,14 +30,21 @@ class SearchComponent extends React.Component {
         }
         search(this.state.keywords)
             .then(res => {
-                this.setState(res && res.error ? {
-                    foundBooks: [],
-                    message: `no matches for '${this.state.keywords}'`
-                } : {
-                        foundBooks: res,
-                        message: null
-
+                if (res && res.error) {
+                    this.setState(prevState => {
+                        prevState.foundBooks = [];
+                        prevState.message = `no matches for '${this.state.keywords}'`;
+                        return prevState;
                     });
+                } else {
+                    this.setState(prevState => {
+                        prevState.foundBooks = res;
+                        return prevState;
+                    });
+
+                }
+
+
             }).catch(err => {
                 console.log(err);
                 this.setState(null);
@@ -53,7 +67,45 @@ class SearchComponent extends React.Component {
 
     };
 
+    refreshMyBooks = () => {
+        // console.log('test');
+        getAll()
+            .then(res => {
+                this.setState(prevState => {
+                    prevState.myBooks = res;
+                    return prevState;
+                });
+            })
+            .catch(err => console.log(err));
+    };
+
     render() {
+
+        this.state.foundBooks.forEach(foundBook => {
+            for (const myBook of this.state.myBooks) {
+                if (foundBook.id === myBook.id) {
+
+                    foundBook.shelf = myBook.shelf;
+                    break;
+                }
+            }
+        });
+
+        const shelves = {
+            currentlyReading: [],
+            wantToRead: [],
+            read: [],
+            none: []
+        };
+
+        this.state.foundBooks.forEach(book => {
+            if (book.shelf) {
+                shelves[book.shelf].push(book);
+            } else {
+                shelves.none.push(book);
+            }
+        });
+
         return (
             <div className="search-component">
 
@@ -67,15 +119,21 @@ class SearchComponent extends React.Component {
                         }}
                     >
                     </input>
+
+                    {this.state.foundBooks.length === 0 && <p>{this.state.message}</p>}
                 </form>
 
                 <Shelf
-                    refreshShelves={null}
+                    refreshMyBooks={this.refreshMyBooks}
                     shelfName={"Found Books"}
-                    books={this.state.foundBooks}>
+                    books={shelves.none}>
                 </Shelf>
 
-                {this.state.foundBooks.length === 0 && <p>{this.state.message}</p>}
+                <Shelves
+                    refreshMyBooks={this.refreshMyBooks}
+                    shelves={shelves}>
+                </Shelves>
+
             </div>
         );
     }

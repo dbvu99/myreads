@@ -21,9 +21,10 @@ class BookComponent extends React.Component {
     };
 
     updateShelf = (props, e) => {
+        console.log('updating')
         update(props, e.currentTarget.value)
             .then(res => {
-                this.props.refreshShelves && this.props.refreshShelves(res);
+                res && this.props.refreshMyBooks && this.props.refreshMyBooks();
             })
             .catch(console.log);
 

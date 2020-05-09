@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import Shelves from './Shelves';
+import Main from './Main';
 import Search from './Search';
 import { Route, Link } from 'react-router-dom';
+
 
 class App extends React.Component {
 
@@ -14,10 +15,8 @@ class App extends React.Component {
           <h1>MyReads</h1>
           <Link to="/search">Search</Link>
         </nav>
-        <Route exact path="/" component={Shelves}>
-        </Route>
-        <Route path="/search" component={Search}>
-        </Route>
+        <Route exact path="/" component={Main}></Route>
+        <Route path="/search" component={Search}></Route>
       </div>
     );
   }

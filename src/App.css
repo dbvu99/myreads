@@ -38,12 +38,12 @@ ul {
 
 
 .shelf-component {
-  /* width: calc(100% / 3); */
+  min-width: 200px;
   flex-basis: 30%;
   flex-grow: 0;
   border: solid 1px black;
   padding: 0px 15px;
-  margin: 5px;
+  margin: 10px;
 }
 
 .shelf-component h2 {
@@ -62,14 +62,16 @@ ul {
   align-self: flex-start;
 }
 
-.search-component{
+.search-component form {
   text-align: center;
+  margin: 10px;
 }
+
 .search-component input{
+  box-sizing: border-box;
+  width: 100%;
   text-align: center;
-  width: 80%;
   text-align: left;
   padding: 10px;
   border: 1px solid black;
-  
 }
