@@ -39,7 +39,7 @@ class MainComponent extends React.Component {
         });
         return (
             <Shelves
-                shelves={this.state}
+                shelves={shelves}
                 refreshMyBooks={this.refreshMyBooks}
             >
             </Shelves>
