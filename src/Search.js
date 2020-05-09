@@ -81,14 +81,16 @@ class SearchComponent extends React.Component {
 
     render() {
 
-        this.state.foundBooks.forEach(foundBook => {
+        const results = this.state.foundBooks.map(foundBook => {
             for (const myBook of this.state.myBooks) {
                 if (foundBook.id === myBook.id) {
 
                     foundBook.shelf = myBook.shelf;
-                    break;
+                    return foundBook;
                 }
             }
+            foundBook.shelf = "none";
+            return foundBook;
         });
 
         const shelves = {
@@ -98,13 +100,13 @@ class SearchComponent extends React.Component {
             none: []
         };
 
-        this.state.foundBooks.forEach(book => {
-            if (book.shelf) {
-                shelves[book.shelf].push(book);
-            } else {
-                shelves.none.push(book);
-            }
-        });
+        // this.state.foundBooks.forEach(book => {
+        //     if (book.shelf) {
+        //         shelves[book.shelf].push(book);
+        //     } else {
+        //         shelves.none.push(book);
+        //     }
+        // });
 
         return (
             <div className="search-component">
@@ -126,13 +128,13 @@ class SearchComponent extends React.Component {
                 <Shelf
                     refreshMyBooks={this.refreshMyBooks}
                     shelfName={"Found Books"}
-                    books={shelves.none}>
+                    books={results}>
                 </Shelf>
 
-                <Shelves
+                {/* <Shelves
                     refreshMyBooks={this.refreshMyBooks}
                     shelves={shelves}>
-                </Shelves>
+                </Shelves> */}
 
             </div>
         );

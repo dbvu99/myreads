@@ -14,6 +14,9 @@ class BookComponent extends React.Component {
     }, {
         value: "read",
         label: "Read"
+    }, {
+        value: "none",
+        label: "None",
     }];
 
     state = {
@@ -21,7 +24,7 @@ class BookComponent extends React.Component {
     };
 
     updateShelf = (props, e) => {
-        console.log('updating')
+        console.log('updating');
         update(props, e.currentTarget.value)
             .then(res => {
                 res && this.props.refreshMyBooks && this.props.refreshMyBooks();
@@ -44,17 +47,17 @@ class BookComponent extends React.Component {
                 </ul>
 
                 <select
-                    onChange={(e) => this.updateShelf(this.props, e)}
+                    onChange={(e) => e.currentTarget.value !== this.props.shelf && this.updateShelf(this.props, e)}
                     value={this.state.shelfValue}
                 >
                     {this.options
-                        .filter(option => option.value !== this.props.shelf)
+                        // .filter(option => option.value !== this.props.shelf)
                         .map(option => <option
                             key={option.value}
                             value={option.value}
-                            disabled={option.value === "moveTo"}
+                            disabled={option.value === "moveTo" || this.props.shelf == option.value}
+                            label={this.props.shelf == option.value ? '✔ ' + option.label : option.label}
                         >
-                            {option.label}
                         </option>)}
                 </select>
             </div>
